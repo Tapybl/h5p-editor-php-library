@@ -8,6 +8,8 @@
  * @returns {ns.LibrarySelector}
  */
 ns.LibrarySelector = function (libraries, defaultLibrary, defaultParams) {
+  var defaultLibrary = 'H5P.InteractiveVideo 1.24';
+
   var that = this;
 
   this.libraries = libraries;
