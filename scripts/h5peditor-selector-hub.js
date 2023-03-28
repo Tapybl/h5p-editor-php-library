@@ -1,8 +1,13 @@
+// MODIFIED VERSION
+
+
 /* global ns */
 /**
  * @class
  * @alias H5PEditor.SelectorHub
  */
+var selectedLibrary = 'H5P.InteractiveVideo 1.24';
+
 ns.SelectorHub = function (libraries, selectedLibrary, changeLibraryDialog) {
   var self = this;
 
@@ -28,17 +33,16 @@ ns.SelectorHub = function (libraries, selectedLibrary, changeLibraryDialog) {
     contentId: H5PEditor.contentId || 0,
     contentTypes: libraries,
     getAjaxUrl: H5PEditor.getAjaxUrl,
-    expanded: true,
-    canPaste: false,
-    enableContentHub: H5PEditor.enableContentHub || false,
+    expanded: false,
+    canPaste: false
   };
 
   if (selectedLibrary) {
     var contentType = this.getContentType(selectedLibrary.split(' ')[0]);
     state.title = contentType ? contentType.title || contentType.machineName : selectedLibrary.split(' ')[0];
     state.expanded = false;
+    console.log("selectedLibrary",selectedLibrary)
   }
-
   // Initialize hub client
   this.client = new H5P.HubClient(state, H5PEditor.language.core);
 
@@ -222,7 +226,6 @@ ns.SelectorHub.prototype.getSelectedLibrary = function (next) {
     selected.tutorialUrl = contentType.tutorial;
     selected.exampleUrl = contentType.example;
   }
-
   return next(selected);
 };
 

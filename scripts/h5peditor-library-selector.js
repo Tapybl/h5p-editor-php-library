@@ -25,24 +25,12 @@ ns.LibrarySelector = function (libraries, defaultLibrary, defaultParams) {
     this.defaultParams = {};
   }
 
-  this.defaultLibrary = this.currentLibrary = defaultLibrary;
+  this.defaultLibrary = this.currentLibrary = 'H5P.InteractiveVideo 1.24';
   this.defaultLibraryParameterized = defaultLibrary ? defaultLibrary.replace('.', '-').toLowerCase() : undefined;
 
   //Add tutorial and example link:
-  this.$tutorialUrl = ns.$(
-    '<a class="h5p-tutorial-url" target="_blank">' + 
-      '<span class="h5p-tutorial-url-label">' + 
-        ns.t('core', 'tutorial') + 
-      '</span>' +
-    '</a>'
-  ).hide();
-  this.$exampleUrl = ns.$(
-    '<a class="h5p-example-url" target="_blank">' + 
-      '<span class="h5p-example-url-label">' + 
-        ns.t('core', 'example') + 
-      '</span>' +
-    '</a>'
-  ).hide();
+  this.$tutorialUrl = ns.$('<a class="h5p-tutorial-url" target="_blank">' + ns.t('core', 'tutorial') + '</a>').hide();
+  this.$exampleUrl = ns.$('<a class="h5p-example-url" target="_blank">' + ns.t('core', 'example') + '</a>').hide();
 
   // Create confirm dialog
   var changeLibraryDialog = new H5P.ConfirmationDialog({
@@ -64,11 +52,11 @@ ns.LibrarySelector = function (libraries, defaultLibrary, defaultParams) {
    * @param {object} library
    */
   var librarySelectHandler = function (library) {
-    that.currentLibrary = library.uberName;
-    that.loadSemantics(library.uberName, that.selector.getParams(), that.selector.getMetadata());
+    that.currentLibrary = "H5P.InteractiveVideo 1.24";
+    that.loadSemantics("H5P.InteractiveVideo 1.24", that.selector.getParams(), that.selector.getMetadata());
 
-    that.$tutorialUrl.attr('href', library.tutorialUrl ? library.tutorialUrl : '#').toggle(!!library.tutorialUrl);
-    that.$exampleUrl.attr('href', library.exampleUrl ? library.exampleUrl : '#').toggle(!!library.exampleUrl);
+    that.$tutorialUrl.attr('href', "H5P.InteractiveVideo 1.24".tutorialUrl ? library.tutorialUrl : '#').toggle(!!library.tutorialUrl);
+    that.$exampleUrl.attr('href', "H5P.InteractiveVideo 1.24".exampleUrl ? library.exampleUrl : '#').toggle(!!library.exampleUrl);
   };
 
   /**
@@ -163,12 +151,12 @@ ns.LibrarySelector.prototype.appendTo = function ($element) {
       ns.attachToastTo(
         self.$copyButton.get(0),
         H5PEditor.t('core', 'copiedToClipboard'), {
-          position: {
-            horizontal: 'center',
-            vertical: 'above',
-            noOverflowX: true
-          }
+        position: {
+          horizontal: 'center',
+          vertical: 'above',
+          noOverflowX: true
         }
+      }
       );
     });
     this.$pasteButton = $buttons.find('.h5peditor-paste-button')
@@ -247,7 +235,9 @@ ns.LibrarySelector.prototype.loadSemantics = function (library, params, metadata
   this.$selector.attr('disabled', true);
 
   ns.resetLoadedLibraries();
-  ns.loadLibrary(library, function (semantics) {
+  // ns.loadLibrary(library, function (semantics) {
+  ns.loadLibrary("H5P.InteractiveVideo 1.24", function (semantics) {
+    console.log("LIBRARY", library)
     if (!semantics) {
       that.form = ns.$('<div/>', {
         'class': 'h5p-errors',
@@ -272,19 +262,19 @@ ns.LibrarySelector.prototype.loadSemantics = function (library, params, metadata
         ? metadata.defaultLanguage
         : null;
       that.form = new ns.Form(
-        library,
-        ns.libraryCache[library].languages,
+        "H5P.InteractiveVideo 1.24",
+        ns.libraryCache["H5P.InteractiveVideo 1.24"].languages,
         defaultLanguage
       );
       that.form.replace($loading);
-      that.form.currentLibrary = library;
+      that.form.currentLibrary = "H5P.InteractiveVideo 1.24";
       that.form.processSemantics(semantics, overrideParams, metadata);
       that.updateCopyPasteButtons();
     }
 
     that.$selector.attr('disabled', false);
     $loading.remove();
-    that.trigger('editorloaded', library);
+    that.trigger('editorloaded', "H5P.InteractiveVideo 1.24");
   });
 };
 
