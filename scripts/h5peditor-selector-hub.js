@@ -4,7 +4,7 @@
  * @alias H5PEditor.SelectorHub
  */
 ns.SelectorHub = function (libraries, selectedLibrary, changeLibraryDialog) {
-  var selectedLibrary = 'H5P.InteractiveVideo 1.24';
+  var selectedLibrary = 'H5P.InteractiveVideo 1.25';
 
   var self = this;
 

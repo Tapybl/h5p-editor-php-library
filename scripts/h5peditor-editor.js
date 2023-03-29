@@ -11,7 +11,8 @@ window.ns = window.H5PEditor = window.H5PEditor || {};
  * @param {Function} iframeLoaded
  */
 ns.Editor = function (library, defaultParams, replace, iframeLoaded) {
-  var library = 'H5P.InteractiveVideo 1.24';
+  var library = 'H5P.InteractiveVideo 1.25';
+
 
   var self = this;
 
